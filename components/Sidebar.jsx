@@ -1,10 +1,62 @@
+'use client'
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import { getDocumentsByTags, getDocumentsByAuthor, getDocumentsByCategory } from "@/utils/doc-utils"
 
 const Sidebar = ({ docs }) => {
+    const pathName = usePathname()
+    const [rootNodes, setRootNodes] = useState([])
+    const [nonRootNodes, setNonRootNodes] = useState({})
 
-    const roots = docs.filter((item) => !item.parent)
+    useEffect(() => {
+        let matchedDocs = docs
 
-    const nonRoots = Object.groupBy(docs.filter((item) => item.parent), ({ parent }) => parent)
+        if (pathName.includes('/tags')) {
+            const tag = pathName.split('/')[2]
+            matchedDocs = getDocumentsByTags(docs, tag)
+        } else if (pathName.includes('/author')) {
+            const author = pathName.split('/')[2]
+            matchedDocs = getDocumentsByAuthor(docs, author)
+        } else if (pathName.includes('/categories')) {
+            const category = pathName.split('/')[2]
+            matchedDocs = getDocumentsByCategory(docs, category)
+        }
+
+        const roots = matchedDocs.filter((item) => !item.parent)
+
+        const nonRoots = Object.groupBy(matchedDocs.filter((item) => item.parent), ({ parent }) => parent)
+
+        const nonRootsKeys = Reflect.ownKeys(nonRoots)
+
+        nonRootsKeys.forEach(key => {
+            const foundInRoots = roots.find((root) => root.id === key)
+            if (!foundInRoots) {
+                const foundInDocs = docs.find((doc) => doc.id == key)
+                roots.push(foundInDocs)
+                console.log(roots)
+            }
+            console.log(roots)
+
+        })
+
+        roots.sort((a, b) => {
+            if (a.order < b.order) {
+                return -1
+            }
+            if (a.order > b.order) {
+                return 1
+            }
+            return 0
+        })
+
+        setRootNodes([...roots])
+        setNonRootNodes({ ...nonRoots })
+
+    }, [pathName])
+
+
 
     return (
         <nav className="lg:block my-10">
@@ -15,7 +67,7 @@ const Sidebar = ({ docs }) => {
                     <div className="absolute left-2 h-6 w-px bg-emerald-500"></div>
                     <ul role="list" className="border-l border-transparent">
                         {
-                            roots.map((rootNode) => (
+                            rootNodes.map((rootNode) => (
                                 <li key={rootNode.id} className="relative">
                                     <Link aria-current="page"
                                         className="flex justify-between gap-2 py-1 pl-4 pr-3 text-sm text-zinc-900 transition dark:text-white"
@@ -25,12 +77,12 @@ const Sidebar = ({ docs }) => {
                                         </span>
 
                                     </Link>
-                                    {nonRoots[rootNode.id] && (
+                                    {nonRootNodes[rootNode.id] && (
                                         <ul
                                             role="list"
                                             className="border-l border-transparent"
                                         >
-                                            {nonRoots[rootNode.id].map(
+                                            {nonRootNodes[rootNode.id].map(
                                                 (subRoot) => (
                                                     <li key={subRoot.id}>
                                                         <Link

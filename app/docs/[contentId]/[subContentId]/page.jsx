@@ -4,7 +4,7 @@ import React from 'react'
 const SubContentPage = ({ params: { subContentId } }) => {
     return (
         <div>
-            <ContentDisplay id={subContentId} />
+            <ContentDisplay id={subContentId} type="doc"/>
         </div>
     )
 }

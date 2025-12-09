@@ -4,7 +4,7 @@ import React from 'react'
 const ContentPage = ({params: {contentId}}) => {
   return (
     <div>
-      <ContentDisplay id={contentId} />
+      <ContentDisplay id={contentId} type="doc" />
     </div>
   )
 }

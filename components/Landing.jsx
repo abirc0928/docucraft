@@ -22,10 +22,12 @@ const Landing = () => {
                             </p>
 
                             <div className="mt-10 flex flex-wrap gap-4">
-                                <Link href="/introduction"
+                                <Link
+                                    href="/docs/introduction"
                                     className="inline-flex justify-center rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-700"
-                                    target="_blank">
-                                    <span>Get Started</span></Link>
+                                >
+                                    <span>Get Started</span>
+                                </Link>
                             </div>
                         </div>
                         <div className="relative lg:col-span-3">
