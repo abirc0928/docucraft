@@ -35,10 +35,7 @@ const Sidebar = ({ docs }) => {
             if (!foundInRoots) {
                 const foundInDocs = docs.find((doc) => doc.id == key)
                 roots.push(foundInDocs)
-                console.log(roots)
             }
-            console.log(roots)
-
         })
 
         roots.sort((a, b) => {
