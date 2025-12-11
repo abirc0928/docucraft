@@ -4,7 +4,7 @@ import React from 'react'
 
 const Logo = () => {
     return (
-        <div className="hidden lg:flex">
+        <div >
             <Link aria-label="Home" href="/">
                 <Image
                     src="/logo.svg"
