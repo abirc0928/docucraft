@@ -6,7 +6,7 @@ import { useState } from "react";
 import SearchResult from "./SearchResult";
 import { useRouter } from "next/navigation";
 
-const Search = ({ docs }) => {
+const Search = ({ docs, isSearchOpen }) => {
     const [searchResult, setSearchResult] = useState([]);
     const [term, setTerm] = useState("");
     const router = useRouter()
@@ -24,7 +24,7 @@ const Search = ({ docs }) => {
         setSearchResult(found)
     }, 500)
 
-    const closeSearchResults = (event) =>{
+    const closeSearchResults = (event) => {
         event.preventDefault();
         router.push(event.target.href);
         setTerm("")
@@ -53,6 +53,21 @@ const Search = ({ docs }) => {
                     </kbd>
                 </button>
             </div>
+            {isSearchOpen &&
+                <div className="absolute">
+                    <input
+                        type="text"
+                        value={term}
+                        onChange={handleSearch}
+                        placeholder="Search..."
+                        className="flex-1 focus:border-none focus:outline-none"
+                    />
+                    <kbd className="ml-auto w-auto text-2xs text-zinc-400 dark:text-zinc-500">
+                        <kbd className="font-sans">Ctrl </kbd>
+                        <kbd className="font-sans">K</kbd>
+                    </kbd>
+                </div>
+            }
             {term && term.trim().length > 0 && (
                 <SearchResult results={searchResult} term={term} closeSearchResults={closeSearchResults} />
             )}

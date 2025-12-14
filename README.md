@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DocuCraft
 
-## Getting Started
+DocuCraft is a future-ready, multi-page documentation website built using **Next.js**.  
+It serves as a centralized knowledge hub where content creators can submit documents using Markdown (MD) files, making content management simple, flexible, and scalable.
 
-First, run the development server:
+DocuCraft combines traditional documentation structure with modern web technologies to provide a fast, dynamic, and clean user experience. It’s designed for developers, teams, or anyone who wants an organized and interactive way to manage documentation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Description
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Build a multi-page documentation website that allows content to be dynamically rendered from Markdown files. This is Part Two of the DocuCraft project.  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Explore the power of **file-based routing** in Next.js by navigating seamlessly across pages and components. Learn how to parse Markdown files and render content dynamically, giving your documentation a rich and interactive experience.  
 
-## Learn More
+Gain insights into **project structure and organization**, enabling you to create scalable, maintainable web applications. DocuCraft is a practical example of how modern web technologies can elevate your documentation workflow.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Dynamic Navbar**  
+  Automatically generated navigation menu based on your Markdown files.  
+  - Filter documents by name  
+  - Filter by tags  
+  - Supports parent–child relationships for structured navigation  
 
-## Deploy on Vercel
+- **Dynamic Search**  
+  Real-time search functionality for quick content discovery.  
+  - Searches across document titles and content  
+  - Provides instant results as you type  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Markdown-Based Content**  
+  Use Markdown files to create and manage documentation effortlessly.  
+  - Load content directly from `.md` files  
+  - Supports front matter for title, date, tags, and order  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Responsive UI**  
+  Clean, readable layout optimized for all devices.  
+  - Fully responsive design for desktop and mobile  
+  - Focused reading experience for long-form documentation  
+
+---
+
+## Tech Stack
+
+- **Next.js** – File-based routing, server-side rendering, and static site generation  
+- **React** – Component-based UI  
+- **Markdown tooling** – gray-matter, remark, rehype for parsing and rendering content  
+- **Tailwind CSS / CSS** – Modern, responsive styling  
+
+---
+
+
