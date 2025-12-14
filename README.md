@@ -7,9 +7,6 @@ DocuCraft combines traditional documentation structure with modern web technolog
 
 ---
 
-
----
-
 ## Live Demo
 
 Check out the live version of DocuCraft here: [https://docucraft-project.netlify.app/](https://docucraft-project.netlify.app/)
